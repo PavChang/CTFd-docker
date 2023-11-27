@@ -4,8 +4,8 @@ services:
     build: .
     user: root
     restart: always
-    #ports:
-    #  - "8000:8000"
+    ports:
+      - "8000:8000"
     environment:
       - UPLOAD_FOLDER=/var/uploads
       - DATABASE_URL=mysql+pymysql://ctfd:ctfd@db/ctfd
@@ -92,11 +92,24 @@ services:
 
 networks:
     default:
+        ipam:
+          config:
+          - subnet: 10.1.0.0/16
     internal:
         internal: true
+        ipam:
+          config:
+          - subnet: 10.2.0.0/16
     frp:
         internal: true
+        ipam:
+          config:
+          - subnet: 10.3.0.0/16
     containers:
         internal: true
         driver: overlay
         attachable: true
+        ipam:
+          config:
+          - subnet: 10.4.0.0/16
+

@@ -15,6 +15,6 @@ def setup_default_configs():
         ['frp_direct_port_minimum', '10101'],
         ['frp_http_domain_suffix', 'dynamic.test.com'],
         ['frpc_config_template',
-         '[common]\r\ntoken = YOUR_TOKEN\r\nserver_addr = frps\r\nserver_port = 7000\r\nadmin_addr = 0.0.0.0\r\nadmin_port = 7400']
+         '[common]\r\ntoken = aa307a06-7020-4028-ae5a-f1238a920c7c\r\nserver_addr = frps\r\nserver_port = 7000\r\nadmin_addr = 0.0.0.0\r\nadmin_port = 7400']
     ]
     DBUtils.save_all_configs(config)

@@ -25,7 +25,7 @@ def setup_default_configs():
         'frp_direct_port_minimum': '10001',
         'template_http_subdomain': '{{ container.uuid }}',
         'template_chall_flag': '{{ "flag{"+uuid.uuid4()|string+"}" }}',
-        'frp_config_template': '[common]\r\ntoken = YOUR_TOKEN\r\nserver_addr = frps\r\nserver_port = 7000\r\nadmin_addr = 0.0.0.0\r\nadmin_port = 7400'
+        'frp_config_template': '[common]\r\ntoken = aa307a06-7020-4028-ae5a-f1238a920c7c\r\nserver_addr = frps\r\nserver_port = 7000\r\nadmin_addr = 0.0.0.0\r\nadmin_port = 7400'
     }.items():
         set_config('whale:' + key, val)
     db.session.add(WhaleRedirectTemplate(
