@@ -16,9 +16,9 @@ services:
       - ACCESS_LOG=-
       - ERROR_LOG=-
       - REVERSE_PROXY=true
-      - CTFD_URL=ctfd.test.com
-      - DIRECT_URL=direct.test.com
-      - DYNAMIC_URL=dynamic.test.com
+      - CTFD_URL=ctf-k8s.org
+      - DIRECT_URL=ctf-k8s.org
+      - DYNAMIC_URL=ctf-k8s.org
     volumes:
       - .data/CTFd/logs:/var/log/CTFd
       - .data/CTFd/uploads:/var/uploads
@@ -73,8 +73,11 @@ services:
     restart: always
     volumes:
       - ./frpc:/etc/frp/
+    depends_on:
+      - frps
     networks:
       frp:
+        ipv4_address: 10.3.0.3
       internal:
       containers:
 
@@ -88,6 +91,7 @@ services:
       - 10001-10200:10001-10200
     networks:
       frp:
+        ipv4_address: 10.3.0.2
       default:
 
 networks:
@@ -112,4 +116,3 @@ networks:
         ipam:
           config:
           - subnet: 10.4.0.0/16
-
