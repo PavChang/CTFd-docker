@@ -33,6 +33,7 @@ def challenges_listing():
         field=field,
     )
 
+
 @admin.route("/admin/challenges/<int:challenge_id>")
 @admins_only
 def challenges_detail(challenge_id):
@@ -76,7 +77,6 @@ def challenges_detail(challenge_id):
 @admin.route("/admin/challenges/preview/<int:challenge_id>")
 @admins_only
 def challenges_preview(challenge_id):
-
     challenge = Challenges.query.filter_by(id=challenge_id).first_or_404()
     chal_class = get_chal_class(challenge.type)
     user = get_current_user()
@@ -97,7 +97,6 @@ def challenges_preview(challenge_id):
 
     content = render_template(
         chal_class.templates["view"].lstrip("/"),
-	#"admin/challenges/challenge.html",
         solves=None,
         solved_by_me=False,
         files=files,
@@ -108,7 +107,7 @@ def challenges_preview(challenge_id):
         challenge=challenge,
     )
     return render_template(
-        "admin/challenges/preview.html",  content=content, challenge=challenge,
+        "admin/challenges/preview.html", content=content, challenge=challenge
     )
 
 
